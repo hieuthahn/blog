@@ -1,0 +1,33 @@
+/* @import url('https://fonts.googleapis.com/css?family=Fira+Mono:400,500|Sriracha'); */
+
+@font-face {
+    font-family: "Product Sans";
+    src: url("/fonts/product-sans/Product-Sans-Bold.ttf") format("ttf");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Product Sans";
+    src: url("/fonts/product-sans/FuturaPT-Demi.ttf") format("ttf");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Product Sans";
+    src: url("/fonts/product-sans/FuturaPT-Book.ttf") format("ttf");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Product Sans";
+    src: url("/fonts/product-sans/FuturaPT-Light.ttf") format("ttf");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
