@@ -1,12 +1,28 @@
 import React, { Fragment } from "react"
-import type { FC, ReactElement } from "react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import styled from "styled-components"
+import { BREAKPOINTS } from "@/constants"
+import { useColorMode } from "@/components/ColorMode/ColorMode"
 
-const Main: FC = ({ children }) => {
+type MainProps = {
+    children: React.ReactNode
+}
+
+const Main = ({ children }: MainProps) => {
+    const { colorMode, setColorMode } = useColorMode()
     return (
         <Wrapper>
+            <label>
+                <input
+                    type="checkbox"
+                    checked={colorMode === "dark"}
+                    onChange={(ev) => {
+                        setColorMode(ev.target.checked ? "dark" : "light")
+                    }}
+                />{" "}
+                Dark
+            </label>
             <Header />
             <main>{children}</main>
             <Footer />
@@ -15,9 +31,9 @@ const Main: FC = ({ children }) => {
 }
 
 const Wrapper = styled.div`
-    max-width: 42rem;
-    margin: 0 auto;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 `
 
 export default Main
