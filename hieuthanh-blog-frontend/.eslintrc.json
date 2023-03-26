@@ -2,10 +2,25 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "next/core-web-vitals"
+    "next/core-web-vitals",
+    "plugin:react/recommended"
   ],
   "rules": {
-    "@typescript-eslint/consistent-type-imports": "error"
+    "@typescript-eslint/consistent-type-imports": "error",
+    "react/display-name": "off",
+    "import/no-anonymous-default-export": [
+      "error",
+      {
+        "allowArray": true,
+        "allowArrowFunction": true,
+        "allowAnonymousClass": false,
+        "allowAnonymousFunction": false,
+        "allowCallExpression": true, // The true value here is for backward compatibility
+        "allowNew": false,
+        "allowLiteral": true,
+        "allowObject": true
+      }
+    ]
   },
   "ignorePatterns": [
     "**/*.gen.ts"
