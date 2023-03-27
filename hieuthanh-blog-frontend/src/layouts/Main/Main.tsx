@@ -13,16 +13,6 @@ const Main = ({ children }: MainProps) => {
     const { colorMode, setColorMode } = useColorMode()
     return (
         <Wrapper>
-            <label>
-                <input
-                    type="checkbox"
-                    checked={colorMode === "dark"}
-                    onChange={(ev) => {
-                        setColorMode(ev.target.checked ? "dark" : "light")
-                    }}
-                />{" "}
-                Dark
-            </label>
             <Header />
             <main>{children}</main>
             <Footer />

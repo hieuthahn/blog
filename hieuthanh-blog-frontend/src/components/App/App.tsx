@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
         font-size: 16px;
         background-color: var(--color-background);
         color: var(--color-text);
+        font-family: var(--font-family);
     }
 
     a {
@@ -26,9 +27,7 @@ const GlobalStyles = createGlobalStyle`
          --font-weight-bold: 600;
         --font-weight-medium: 500;
         --font-weight-light: 400;
-        --font-family: "Wotfard","Wotfard-fallback",sans-serif;
-        --font-family-mono: "League Mono","Fira Mono",monospace;
-        --font-family-spicy: "Sriracha","Wotfard",Futura,-apple-system,sans-serif;
+        --font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
         --reach-dialog: 1;
     }
    
