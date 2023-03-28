@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
         background-color: var(--color-background);
         color: var(--color-text);
         font-family: var(--font-family);
+        transition: color 350ms ease 0s, background 350ms ease 0s;
     }
 
     a {

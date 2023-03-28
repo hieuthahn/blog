@@ -2,15 +2,12 @@ import React, { Fragment } from "react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import styled from "styled-components"
-import { BREAKPOINTS } from "@/constants"
-import { useColorMode } from "@/components/ColorMode/ColorMode"
 
 type MainProps = {
     children: React.ReactNode
 }
 
 const Main = ({ children }: MainProps) => {
-    const { colorMode, setColorMode } = useColorMode()
     return (
         <Wrapper>
             <Header />

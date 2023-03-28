@@ -107,11 +107,11 @@ export const COLORS = {
     },
     ["text"]: {
         dark: "hsl(0deg, 0%, 100%)",
-        light: "(222deg, 22%, 5%)",
+        light: "hsl(222deg, 22%, 5%)",
     },
     ["background"]: {
         dark: "hsl(210deg, 30%, 8%)",
-        light: "(0deg, 0%, 100%)",
+        light: "hsl(0deg, 0%, 100%)",
     },
     ["blurred-background"]: {
         dark: "hsla(210deg, 30%, 8%, 0.85)",
@@ -119,23 +119,23 @@ export const COLORS = {
     },
     ["primary"]: {
         dark: "hsl(230deg, 100%, 69%)",
-        light: "(245deg, 100%, 60%)",
+        light: "hsl(245deg, 100%, 60%)",
     },
     ["secondary"]: {
         dark: "hsl(333deg, 100%, 52%)",
-        light: "(333deg, 100%, 45%)",
+        light: "hsl(333deg, 100%, 45%)",
     },
     ["tertiary"]: {
         dark: "hsl(53deg, 100%, 50%)",
-        light: "(255deg, 85%, 30%)",
+        light: "hsl(255deg, 85%, 30%)",
     },
     ["decorative"]: {
         dark: "hsl(200deg, 50%, 60%)",
-        light: "(200deg, 75%, 65%)",
+        light: "hsl(200deg, 75%, 65%)",
     },
     ["muted"]: {
         dark: "hsl(210deg, 38%, 15%)",
-        light: "(210deg, 55%, 92%)",
+        light: "hsl(210deg, 55%, 92%)",
     },
     ["muted-background"]: {
         dark: "hsla(210deg, 38%, 15%, 0.85)",
@@ -143,11 +143,11 @@ export const COLORS = {
     },
     ["info"]: {
         dark: "hsl(230deg, 100%, 69%)",
-        light: "(245deg, 100%, 60%)",
+        light: "hsl(245deg, 100%, 60%)",
     },
     ["success"]: {
         dark: "hsl(160deg, 100%, 40%)",
-        light: "(160deg, 100%, 40%)",
+        light: "hsl(160deg, 100%, 40%)",
     },
     ["success-background"]: {
         dark: "hsla(160deg, 100%, 40%, 0.1)",
@@ -155,7 +155,7 @@ export const COLORS = {
     },
     ["error"]: {
         dark: "hsl(340deg, 95%, 60%)",
-        light: "(340deg, 95%, 50%)",
+        light: "hsl(340deg, 95%, 50%)",
     },
     ["error-background"]: {
         dark: "hsla(340deg, 95%, 43%, 0.1)",
@@ -163,7 +163,7 @@ export const COLORS = {
     },
     ["alert"]: {
         dark: "hsl(30deg, 100%, 50%)",
-        light: "(37deg, 100%, 50%)",
+        light: "hsl(37deg, 100%, 50%)",
     },
     ["alert-background"]: {
         dark: "hsl(40deg 13% 13%)",
