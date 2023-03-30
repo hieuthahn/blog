@@ -2,6 +2,7 @@ import Head from "next/head"
 import React from "react"
 import { Inter } from "next/font/google"
 import Main from "@/layouts/Main"
+import styled from "styled-components"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,9 +21,69 @@ export default function Home() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div style={{ minHeight: "1000px" }}>content</div>
+            <div>
+                <IntroSection className="-mt-16">
+                    <div className="w-full max-w-2xl px-10 pt-32 pb-40 m-auto text-center text-color-text">
+                        <h1 className="text-5xl sm:text-7xl">
+                            <span className="font-light">I'm</span>{" "}
+                            <span className="font-bold">Hieu Thanh</span>
+                        </h1>
+                        <h2 className="mt-4 text-lg opacity-90">
+                            I'm build things for the{" "}
+                            <span className="rounded-full bg-gradient-to-r from-[#6366f1] via-[#a855f7] to-[#ec4899] bg-clip-text font-bold text-transparent">
+                                web
+                            </span>
+                        </h2>
+                        <p className="mx-auto mt-8 text-sm opacity-80 sm:text-lg">
+                            I am a Web developer focused on building beautiful
+                            and high-performance system using cutting-edge
+                            technologies.
+                        </p>
+                        <div className="pt-12 space-x-0 md:space-x-4 space-y-4 ">
+                            <a
+                                className="rounded-full bg-color-syntax-fn hover:opacity-75 btn space-x-2 font-semibold"
+                                href="mailto:hieuthahn@gmail.com"
+                            >
+                                <span>👋</span>
+                                <span>Contact Me</span>
+                            </a>
+                            <a
+                                className="rounded-full bg-color-blurred-background hover:opacity-75 p btn space-x-2 font-semibold"
+                                href="mailto:hieuthahn@gmail.com"
+                            >
+                                <span>💼</span>
+                                <span>My Resume</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 w-full">
+                        <svg
+                            preserveAspectRatio="none"
+                            width="1440"
+                            height="74"
+                            viewBox="0 0 1440 74"
+                            className="fill-color-subtle-background w-full"
+                            style={{ transition: "fill 350ms ease 0s" }}
+                        >
+                            <path d="M456.464 0.0433865C277.158 -1.70575 0 50.0141 0 50.0141V74H1440V50.0141C1440 50.0141 1320.4 31.1925 1243.09 27.0276C1099.33 19.2816 1019.08 53.1981 875.138 50.0141C710.527 46.3727 621.108 1.64949 456.464 0.0433865Z"></path>
+                        </svg>
+                    </div>
+                </IntroSection>
+            </div>
         </>
     )
 }
+
+const IntroSection = styled.section`
+    position: relative;
+    z-index: 3;
+    background: linear-gradient(
+        0deg,
+        var(--color-homepage-dark),
+        var(--color-homepage-light)
+    );
+    transition: --color-homepage-light 350ms linear 0s,
+        --color-homepage-dark 350ms linear 0s;
+`
 
 Home.getLayout = (page: React.ReactNode) => <Main>{page}</Main>

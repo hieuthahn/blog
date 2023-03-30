@@ -10,18 +10,10 @@ const GlobalStyles = createGlobalStyle`
     }
     html {
         font-size: 16px;
-        background-color: var(--color-background);
+        background-color: var(--color-subtle-background);
         color: var(--color-text);
         font-family: var(--font-family);
         transition: color 350ms ease 0s, background 350ms ease 0s;
-    }
-
-    a {
-        color: ${COLORS.pink[500]};
-    }
-
-    ::selection {
-        background-color: ${COLORS.purple[500]};
     }
 
     :root {

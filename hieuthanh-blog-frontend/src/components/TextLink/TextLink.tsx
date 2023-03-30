@@ -22,7 +22,13 @@ const TextLink = ({
     const { colorMode } = useColorMode()
     return (
         <Wrapper>
-            <LinkWrapper activePath={activePath} {...delegated}>
+            <Link
+                theme={colorMode}
+                className={`relative p-[10px] text-base text-color-text ${
+                    activePath === delegated?.href ? "font-semibold" : ""
+                }`}
+                {...delegated}
+            >
                 {children}
                 {activePath === delegated?.href && (
                     <>
@@ -88,7 +94,7 @@ const TextLink = ({
                         )}
                     </>
                 )}
-            </LinkWrapper>
+            </Link>
         </Wrapper>
     )
 }
@@ -97,19 +103,6 @@ const Wrapper = styled.div`
     position: relative;
     display: flex;
     align-items: center;
-`
-
-const LinkWrapper = styled(Link)`
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    font-size: 1rem;
-    color: var(--color-text);
-    font-weight: ${(props) =>
-        props?.activePath === props?.href
-            ? "var(--font-weight-bold)"
-            : "var(--font-weight-light)"};
 `
 
 const Svg = styled(Icon)`

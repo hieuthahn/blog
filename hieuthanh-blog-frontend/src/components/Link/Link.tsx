@@ -38,9 +38,7 @@ const Link = ({ href, target, rel, ...delegated }: Props) => {
 
 const ExternalLink = styled.a`
     color: ${(props) =>
-        COLORS.primary[props.theme]
-            ? COLORS.primary[props.theme]
-            : COLORS.pink[500]};
+        COLORS.text[props.theme] ? COLORS.text[props.theme] : COLORS.pink[500]};
 `
 
 const InternalLink = styled(ExternalLink).attrs((props) => ({
