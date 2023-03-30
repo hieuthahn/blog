@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+        padding: 0.5rem 1rem;
+        font-weight: 700;
+    }
+}
