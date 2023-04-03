@@ -1,12 +1,21 @@
 import Head from "next/head"
 import React from "react"
+import type { FC } from "react"
 import { Inter } from "next/font/google"
 import Main from "@/layouts/Main"
 import styled from "styled-components"
+import axios from "@/config/axios"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export default function Home() {
+interface HomeProps {
+    props: any
+}
+
+export default function Home(props): FC<HomeProps> {
+    const { about } = props
+    console.log(about)
+
     return (
         <>
             <Head>
@@ -35,11 +44,9 @@ export default function Home() {
                             </span>
                         </h2>
                         <p className="mx-auto mt-8 text-sm opacity-80 sm:text-lg">
-                            I am a Web developer focused on building beautiful
-                            and high-performance system using cutting-edge
-                            technologies.
+                            {about?.data?.attributes?.introduction}
                         </p>
-                        <div className="pt-12 space-x-0 md:space-x-4 space-y-4 ">
+                        <div className="pt-12 flex flex-wrap gap-4 items-center justify-center">
                             <a
                                 className="rounded-full bg-color-syntax-fn hover:opacity-75 btn space-x-2 font-semibold"
                                 href="mailto:hieuthahn@gmail.com"
@@ -69,6 +76,10 @@ export default function Home() {
                         </svg>
                     </div>
                 </IntroSection>
+                <section>
+                    <div>SKILLS</div>
+                    <div></div>
+                </section>
             </div>
         </>
     )
@@ -85,5 +96,15 @@ const IntroSection = styled.section`
     transition: --color-homepage-light 350ms linear 0s,
         --color-homepage-dark 350ms linear 0s;
 `
+
+export async function getStaticProps(ctx) {
+    const about = await axios.get("/api/about")
+
+    return {
+        props: {
+            about: about || {},
+        },
+    }
+}
 
 Home.getLayout = (page: React.ReactNode) => <Main>{page}</Main>
