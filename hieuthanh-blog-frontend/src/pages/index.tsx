@@ -5,6 +5,9 @@ import { Inter } from "next/font/google"
 import Main from "@/layouts/Main"
 import styled from "styled-components"
 import axios from "@/config/axios"
+import Link from "next/link"
+import { MdOpenInNew } from "react-icons/md"
+import { AiFillGithub } from "react-icons/ai"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -14,7 +17,7 @@ interface HomeProps {
 
 export default function Home(props): FC<HomeProps> {
     const { about } = props
-    console.log(about)
+    console.log("about", about)
 
     return (
         <>
@@ -32,7 +35,7 @@ export default function Home(props): FC<HomeProps> {
             </Head>
             <div>
                 <IntroSection className="-mt-16">
-                    <div className="w-full max-w-2xl px-10 pt-32 pb-40 m-auto text-center text-color-text">
+                    <div className="w-full max-w-2xl px-4 pt-32 pb-40 m-auto text-center text-color-text">
                         <h1 className="text-5xl sm:text-7xl">
                             <span className="font-light">I'm</span>{" "}
                             <span className="font-bold">Hieu Thanh</span>
@@ -76,9 +79,113 @@ export default function Home(props): FC<HomeProps> {
                         </svg>
                     </div>
                 </IntroSection>
-                <section>
-                    <div>SKILLS</div>
-                    <div></div>
+
+                {/* Skills section */}
+                <section className="max-w-3xl mx-auto flex flex-col sm:flex-row px-4 py-12 justify-center">
+                    <div className="text-color-primary font-bold basis-0 sm:basis-24 text-left sm:text-right mr-20 mb-4">
+                        SKILLS
+                    </div>
+                    <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 justify-center">
+                        {Object.entries(about?.data?.attributes?.skills)
+                            .reverse()
+                            .map(([key, value], index) => {
+                                return (
+                                    <div key={index} className="">
+                                        <div className="font-semibold">
+                                            {key.toUpperCase()}
+                                        </div>
+                                        {value.map((item) => (
+                                            <div
+                                                key={item}
+                                                className="opacity-80"
+                                            >
+                                                {item}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )
+                            })}
+                    </div>
+                </section>
+
+                {/* Experience section */}
+                <section className="max-w-3xl mx-auto flex flex-col sm:flex-row px-4 py-12 justify-center">
+                    <div className="text-color-primary font-bold basis-0 sm:basis-24 text-left sm:text-right mr-20 mb-4">
+                        EXPERIENCE
+                    </div>
+                    <div className="flex-1">
+                        {about?.data?.attributes?.experience.map(
+                            (item, index) => {
+                                return (
+                                    <div
+                                        className=" flex-grow flex justify-between"
+                                        key={index}
+                                    >
+                                        <div className="font-semibold">
+                                            <Link
+                                                href={item?.website || "#"}
+                                                target="_blank"
+                                                className="block"
+                                            >
+                                                {item?.company}
+                                            </Link>
+                                            <span className="font-normal text-sm opacity-80">
+                                                {item?.position}
+                                            </span>
+                                        </div>
+                                        <div>{item?.time}</div>
+                                    </div>
+                                )
+                            }
+                        )}
+                    </div>
+                </section>
+
+                {/* Experience section */}
+                <section className="max-w-3xl mx-auto flex flex-col sm:flex-row px-4 py-12 justify-center">
+                    <div className="text-color-primary font-bold basis-0 sm:basis-24 text-left sm:text-right mr-20 mb-4">
+                        PROJECTS
+                    </div>
+                    <div className="flex-1">
+                        {about?.data?.attributes?.projects.map(
+                            (item, index) => {
+                                return (
+                                    <div key={index} className="space-y-2 mb-3">
+                                        <div className="font-semibold flex justify-between">
+                                            <div>{item?.name}</div>
+                                            <div className="flex space-x-2">
+                                                <Link
+                                                    href={item?.website || "#"}
+                                                >
+                                                    <MdOpenInNew size={18} />
+                                                </Link>
+                                                <Link
+                                                    href={item?.github || "#"}
+                                                >
+                                                    <AiFillGithub size={18} />
+                                                </Link>
+                                            </div>
+                                        </div>
+                                        <div className="opacity-80">
+                                            {item?.description}
+                                        </div>
+                                        <div className="flex space-x-3">
+                                            {item?.technology?.map(
+                                                (tech, index) => (
+                                                    <span
+                                                        className="px-2 py-1 opacity-70 text-sm font-normal bg-gray-500/30 rounded-md font-mono"
+                                                        key={index}
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                )
+                                            )}
+                                        </div>
+                                    </div>
+                                )
+                            }
+                        )}
+                    </div>
                 </section>
             </div>
         </>
