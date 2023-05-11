@@ -1,7 +1,14 @@
 import axios from "axios"
 
 const axiosInstance = axios.create({
-    baseURL: process.env.API_URL || "http://localhost:1337",
+    baseURL:
+        process.env.NEXT_PUBLIC_API_URL ||
+        "http://127.0.0.1:1337" ||
+        "http://localhost:1337",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    withCredentials: true,
 })
 
 // Add a request interceptor

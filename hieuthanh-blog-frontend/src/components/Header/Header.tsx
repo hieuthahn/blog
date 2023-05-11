@@ -5,7 +5,8 @@ import NextLink from "next/link"
 import { Z_INDICES } from "@/constants"
 import TextLink from "../TextLink/TextLink"
 import { useRouter } from "next/router"
-import { BsFillMoonFill } from "react-icons/bs"
+import { BsFillMoonFill, BsMoonFill, BsSun, BsSunFill } from "react-icons/bs"
+import { IoMdSunny } from "react-icons/io"
 import { TbSunFilled } from "react-icons/tb"
 import { useColorMode } from "@/components/ColorMode/ColorMode"
 import Icon from "../Icon/Icon"
@@ -43,11 +44,7 @@ const Header = () => {
             <InnerWrapper>
                 <HeaderLeftWrapper>
                     <LogoWrapper href="/">
-                        <LogoSVG
-                            width={140}
-                            version="1.1"
-                            viewBox="0 0 219.33 40.18"
-                        >
+                        <LogoSVG version="1.1" viewBox="0 0 219.33 40.18">
                             <path
                                 d="M22.67,37.06h-4.08V22.04c0-1.81-0.34-3.17-1.02-4.07s-1.65-1.35-2.92-1.35c-0.55,0-1.06,0.07-1.54,0.22
 		s-0.97,0.41-1.49,0.77s-1.08,0.86-1.69,1.49s-1.31,1.41-2.11,2.34v15.61H3.75V3.94h4.08v9.59l-0.14,3.7
@@ -132,9 +129,9 @@ const Header = () => {
                         }
                     >
                         {colorMode === "dark" ? (
-                            <BsFillMoonFill />
+                            <BsMoonFill size={20} />
                         ) : (
-                            <TbSunFilled size={24} />
+                            <IoMdSunny size={20} />
                         )}
                     </Button>
                 </HeaderRightWrapper>
@@ -158,14 +155,34 @@ const InnerWrapper = styled.header`
     z-index: ${Z_INDICES.header};
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 768px) {
+        justify-content: center;
+        flex-direction: column-reverse;
+    }
 `
 
 const HeaderLeftWrapper = styled.div`
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
 `
 
-const HeaderRightWrapper = styled(HeaderLeftWrapper)``
+const HeaderRightWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 14px;
+    }
+`
 
 const LogoWrapper = styled(NextLink)`
     font-size: 24px;
@@ -173,6 +190,11 @@ const LogoWrapper = styled(NextLink)`
     padding: 0;
     margin-right: 32px;
     letter-spacing: -1px;
+
+    @media screen and (max-width: 768px) {
+        margin-right: 0px;
+        margin-top: 14px;
+    }
 `
 
 const LogoText = styled.span`
@@ -188,6 +210,7 @@ const LogoSVG = styled(Icon)`
     stroke-dasharray: 0;
     stroke-dashoffset: 0;
     animation: show 3s ease-in-out infinite alternate;
+    width: 130px;
 
     @keyframes show {
         0% {
@@ -198,6 +221,10 @@ const LogoSVG = styled(Icon)`
             fill: var(--color-primary);
             stroke-dashoffset: 0;
         }
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 110px;
     }
 `
 

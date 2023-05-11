@@ -17,7 +17,6 @@ interface HomeProps {
 
 export default function Home(props): FC<HomeProps> {
     const { about } = props
-    console.log("about", about)
 
     return (
         <>
@@ -34,8 +33,8 @@ export default function Home(props): FC<HomeProps> {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div>
-                <IntroSection className="-mt-16">
-                    <div className="w-full max-w-2xl px-4 pt-32 pb-40 m-auto text-center text-color-text">
+                <IntroSection>
+                    <div className="w-full max-w-2xl px-4 py-40 m-auto text-center lg:py-48 text-color-text">
                         <h1 className="text-5xl sm:text-7xl">
                             <span className="font-light">I'm</span>{" "}
                             <span className="font-bold">Hieu Thanh</span>
@@ -49,16 +48,16 @@ export default function Home(props): FC<HomeProps> {
                         <p className="mx-auto mt-8 text-sm opacity-80 sm:text-lg">
                             {about?.data?.attributes?.introduction}
                         </p>
-                        <div className="pt-12 flex flex-wrap gap-4 items-center justify-center">
+                        <div className="flex flex-wrap items-center justify-center gap-4 pt-12">
                             <a
-                                className="rounded-full bg-color-syntax-fn hover:opacity-75 btn space-x-2 font-semibold"
+                                className="space-x-2 font-semibold rounded-full bg-color-syntax-fn hover:opacity-75 btn"
                                 href="mailto:hieuthahn@gmail.com"
                             >
                                 <span>👋</span>
                                 <span>Contact Me</span>
                             </a>
                             <a
-                                className="rounded-full bg-color-blurred-background hover:opacity-75 p btn space-x-2 font-semibold"
+                                className="space-x-2 font-semibold rounded-full bg-color-blurred-background hover:opacity-75 p btn"
                                 href="mailto:hieuthahn@gmail.com"
                             >
                                 <span>💼</span>
@@ -66,13 +65,13 @@ export default function Home(props): FC<HomeProps> {
                             </a>
                         </div>
                     </div>
-                    <div className="absolute bottom-0 left-0 w-full">
+                    <div className="absolute bottom-0 left-0 w-full overflow-hidden">
                         <svg
                             preserveAspectRatio="none"
                             width="1440"
                             height="74"
                             viewBox="0 0 1440 74"
-                            className="fill-color-subtle-background w-full"
+                            className="w-full fill-color-subtle-background min-w-[600px] max-w-[unset]"
                             style={{ transition: "fill 350ms ease 0s" }}
                         >
                             <path d="M456.464 0.0433865C277.158 -1.70575 0 50.0141 0 50.0141V74H1440V50.0141C1440 50.0141 1320.4 31.1925 1243.09 27.0276C1099.33 19.2816 1019.08 53.1981 875.138 50.0141C710.527 46.3727 621.108 1.64949 456.464 0.0433865Z"></path>
@@ -81,11 +80,11 @@ export default function Home(props): FC<HomeProps> {
                 </IntroSection>
 
                 {/* Skills section */}
-                <section className="max-w-3xl mx-auto flex flex-col sm:flex-row px-4 py-12 justify-center">
-                    <div className="text-color-primary font-bold basis-0 sm:basis-24 text-left sm:text-right mr-20 mb-4">
+                <section className="flex flex-col justify-center max-w-3xl px-4 py-12 mx-auto sm:flex-row">
+                    <div className="mb-4 mr-20 font-bold text-left text-color-primary basis-0 sm:basis-24 sm:text-right">
                         SKILLS
                     </div>
-                    <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 justify-center">
+                    <div className="grid justify-center flex-1 grid-cols-2 gap-6 md:grid-cols-4 sm:gap-10">
                         {Object.entries(about?.data?.attributes?.skills)
                             .reverse()
                             .map(([key, value], index) => {
@@ -109,8 +108,8 @@ export default function Home(props): FC<HomeProps> {
                 </section>
 
                 {/* Experience section */}
-                <section className="max-w-3xl mx-auto flex flex-col sm:flex-row px-4 py-12 justify-center">
-                    <div className="text-color-primary font-bold basis-0 sm:basis-24 text-left sm:text-right mr-20 mb-4">
+                <section className="flex flex-col justify-center max-w-3xl px-4 py-12 mx-auto sm:flex-row">
+                    <div className="mb-4 mr-20 font-bold text-left text-color-primary basis-0 sm:basis-24 sm:text-right">
                         EXPERIENCE
                     </div>
                     <div className="flex-1">
@@ -118,7 +117,7 @@ export default function Home(props): FC<HomeProps> {
                             (item, index) => {
                                 return (
                                     <div
-                                        className=" flex-grow flex justify-between"
+                                        className="flex justify-between flex-grow "
                                         key={index}
                                     >
                                         <div className="font-semibold">
@@ -129,7 +128,7 @@ export default function Home(props): FC<HomeProps> {
                                             >
                                                 {item?.company}
                                             </Link>
-                                            <span className="font-normal text-sm opacity-80">
+                                            <span className="text-sm font-normal opacity-80">
                                                 {item?.position}
                                             </span>
                                         </div>
@@ -142,16 +141,16 @@ export default function Home(props): FC<HomeProps> {
                 </section>
 
                 {/* Experience section */}
-                <section className="max-w-3xl mx-auto flex flex-col sm:flex-row px-4 py-12 justify-center">
-                    <div className="text-color-primary font-bold basis-0 sm:basis-24 text-left sm:text-right mr-20 mb-4">
+                <section className="flex flex-col justify-center max-w-3xl px-4 py-12 mx-auto sm:flex-row">
+                    <div className="mb-4 mr-20 font-bold text-left text-color-primary basis-0 sm:basis-24 sm:text-right">
                         PROJECTS
                     </div>
                     <div className="flex-1">
                         {about?.data?.attributes?.projects.map(
                             (item, index) => {
                                 return (
-                                    <div key={index} className="space-y-2 mb-3">
-                                        <div className="font-semibold flex justify-between">
+                                    <div key={index} className="mb-3 space-y-2">
+                                        <div className="flex justify-between font-semibold">
                                             <div>{item?.name}</div>
                                             <div className="flex space-x-2">
                                                 <Link
@@ -173,7 +172,7 @@ export default function Home(props): FC<HomeProps> {
                                             {item?.technology?.map(
                                                 (tech, index) => (
                                                     <span
-                                                        className="px-2 py-1 opacity-70 text-sm font-normal bg-gray-500/30 rounded-md font-mono"
+                                                        className="px-2 py-1 font-mono text-sm font-normal rounded-md opacity-70 bg-gray-500/30"
                                                         key={index}
                                                     >
                                                         {tech}
@@ -202,6 +201,7 @@ const IntroSection = styled.section`
     );
     transition: --color-homepage-light 350ms linear 0s,
         --color-homepage-dark 350ms linear 0s;
+    margin-top: -8.5rem;
 `
 
 export async function getStaticProps(ctx) {
