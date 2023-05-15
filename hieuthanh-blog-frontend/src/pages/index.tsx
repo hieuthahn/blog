@@ -8,6 +8,7 @@ import axios from "@/config/axios"
 import Link from "next/link"
 import { MdOpenInNew } from "react-icons/md"
 import { AiFillGithub } from "react-icons/ai"
+import Button from "@/components/Button"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -49,20 +50,20 @@ export default function Home(props): FC<HomeProps> {
                             {about?.data?.attributes?.introduction}
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-4 pt-12">
-                            <a
-                                className="space-x-2 font-semibold rounded-full bg-color-syntax-fn hover:opacity-75 btn"
+                            <Button
                                 href="mailto:hieuthahn@gmail.com"
+                                variant="solid"
+                                icon={<span>👋</span>}
                             >
-                                <span>👋</span>
-                                <span>Contact Me</span>
-                            </a>
-                            <a
-                                className="space-x-2 font-semibold rounded-full bg-color-blurred-background hover:opacity-75 p btn"
+                                Contact Me
+                            </Button>
+                            <Button
                                 href="mailto:hieuthahn@gmail.com"
+                                variant="outline"
+                                icon={<span>💼</span>}
                             >
-                                <span>💼</span>
-                                <span>My Resume</span>
-                            </a>
+                                My Resume
+                            </Button>
                         </div>
                     </div>
                     <div className="absolute bottom-0 left-0 w-full overflow-hidden">

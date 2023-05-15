@@ -119,7 +119,7 @@ export const COLORS = {
     },
     ["primary"]: {
         dark: "hsl(230deg, 100%, 69%)",
-        light: "hsl(245deg, 100%, 60%)",
+        light: "#77d2ff",
     },
     ["secondary"]: {
         dark: "hsl(333deg, 100%, 52%)",

@@ -178,7 +178,7 @@ input,
 button,
 select,
 option {
-    font-family: "Futura PT";
+    font-family: inherit;
 }
 
 code {
