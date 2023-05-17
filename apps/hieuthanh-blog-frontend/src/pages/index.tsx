@@ -7,8 +7,9 @@ import styled from "styled-components"
 import axios from "@/config/axios"
 import Link from "next/link"
 import { MdOpenInNew } from "react-icons/md"
-import { AiFillGithub } from "react-icons/ai"
+import { AiFillGithub, AiFillLinkedin, AiOutlineTwitter } from "react-icons/ai"
 import Button from "@/components/Button"
+import about from "@/lib/data/about"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -16,11 +17,9 @@ interface HomeProps {
     props: any
 }
 
-export default function Home(props): FC<HomeProps> {
-    const { about } = props
-
+export default function Home(): React.FC<HomeProps> {
     return (
-        <>
+        <React.Fragment>
             <Head>
                 <title>Hieu Thanh | Developer</title>
                 <meta
@@ -47,7 +46,7 @@ export default function Home(props): FC<HomeProps> {
                             </span>
                         </h2>
                         <p className="mx-auto mt-8 text-sm opacity-80 sm:text-lg">
-                            {about?.data?.attributes?.introduction}
+                            {about?.introduction}
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-4 pt-12">
                             <Button
@@ -86,7 +85,7 @@ export default function Home(props): FC<HomeProps> {
                         SKILLS
                     </div>
                     <div className="grid justify-center flex-1 grid-cols-2 gap-6 md:grid-cols-4 sm:gap-10">
-                        {Object.entries(about?.data?.attributes?.skills)
+                        {Object.entries(about?.skills)
                             .reverse()
                             .map(([key, value], index) => {
                                 return (
@@ -114,81 +113,106 @@ export default function Home(props): FC<HomeProps> {
                         EXPERIENCE
                     </div>
                     <div className="flex-1">
-                        {about?.data?.attributes?.experience.map(
-                            (item, index) => {
-                                return (
-                                    <div
-                                        className="flex justify-between flex-grow "
-                                        key={index}
-                                    >
-                                        <div className="font-semibold">
-                                            <Link
-                                                href={item?.website || "#"}
-                                                target="_blank"
-                                                className="block"
-                                            >
-                                                {item?.company}
-                                            </Link>
-                                            <span className="text-sm font-normal opacity-80">
-                                                {item?.position}
-                                            </span>
-                                        </div>
-                                        <div>{item?.time}</div>
+                        {about?.experience.map((item, index) => {
+                            return (
+                                <div
+                                    className="flex justify-between flex-grow "
+                                    key={index}
+                                >
+                                    <div className="font-semibold">
+                                        <Link
+                                            href={item?.website || "#"}
+                                            target="_blank"
+                                            className="block"
+                                        >
+                                            {item?.company}
+                                        </Link>
+                                        <span className="text-sm font-normal opacity-80">
+                                            {item?.position}
+                                        </span>
                                     </div>
-                                )
-                            }
-                        )}
+                                    <div>{item?.time}</div>
+                                </div>
+                            )
+                        })}
                     </div>
                 </section>
 
                 {/* Experience section */}
                 <section className="flex flex-col justify-center max-w-3xl px-4 py-12 mx-auto sm:flex-row">
                     <div className="mb-4 mr-20 font-bold text-left text-color-primary basis-0 sm:basis-24 sm:text-right">
-                        PROJECTS
+                        PERSONAL PROJECTS
                     </div>
                     <div className="flex-1">
-                        {about?.data?.attributes?.projects.map(
-                            (item, index) => {
-                                return (
-                                    <div key={index} className="mb-3 space-y-2">
-                                        <div className="flex justify-between font-semibold">
-                                            <div>{item?.name}</div>
-                                            <div className="flex space-x-2">
-                                                <Link
-                                                    href={item?.website || "#"}
-                                                >
-                                                    <MdOpenInNew size={18} />
-                                                </Link>
-                                                <Link
-                                                    href={item?.github || "#"}
-                                                >
-                                                    <AiFillGithub size={18} />
-                                                </Link>
-                                            </div>
-                                        </div>
-                                        <div className="opacity-80">
-                                            {item?.description}
-                                        </div>
-                                        <div className="flex space-x-3">
-                                            {item?.technology?.map(
-                                                (tech, index) => (
-                                                    <span
-                                                        className="px-2 py-1 font-mono text-sm font-normal rounded-md opacity-70 bg-gray-500/30"
-                                                        key={index}
-                                                    >
-                                                        {tech}
-                                                    </span>
-                                                )
-                                            )}
+                        {about?.projects.map((item, index) => {
+                            return (
+                                <div key={index} className="mb-3 space-y-2">
+                                    <div className="flex justify-between font-semibold">
+                                        <div>{item?.name}</div>
+                                        <div className="flex space-x-2">
+                                            <Link href={item?.website || "#"}>
+                                                <MdOpenInNew size={18} />
+                                            </Link>
+                                            <Link href={item?.github || "#"}>
+                                                <AiFillGithub size={18} />
+                                            </Link>
                                         </div>
                                     </div>
-                                )
-                            }
-                        )}
+                                    <div className="opacity-80">
+                                        {item?.description}
+                                    </div>
+                                    <div className="flex space-x-3">
+                                        {item?.technology?.map(
+                                            (tech, index) => (
+                                                <span
+                                                    className="px-2 py-1 font-mono text-sm font-normal rounded-md opacity-70 bg-gray-500/30"
+                                                    key={index}
+                                                >
+                                                    {tech}
+                                                </span>
+                                            )
+                                        )}
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
                 </section>
+
+                {/* Contact with me */}
+                <div className="flex flex-col items-center justify-center gap-2 px-4 py-12">
+                    <div className="text-xl font-bold text-color-gray-700">
+                        Contact with me
+                    </div>
+                    <div className="flex gap-3">
+                        <Button
+                            className="hover:-translate-y-1 hover:opacity-100 ease-out duration-300 rounded-xl text-color-text bg-[#1DA1F2]"
+                            href="#"
+                            variant="solid"
+                            icon={<AiOutlineTwitter />}
+                        >
+                            Twitter
+                        </Button>
+                        <Button
+                            className="duration-300 ease-out hover:-translate-y-1 hover:opacity-100 bg-color-gray-400 rounded-xl text-color-text"
+                            href="#"
+                            variant="solid"
+                            icon={<AiFillGithub />}
+                        >
+                            Github
+                        </Button>
+                        <Button
+                            className="hover:-translate-y-1 hover:opacity-100 ease-out duration-300 rounded-xl text-color-text bg-[#0077B5]"
+                            href="#"
+                            variant="solid"
+                            icon={<AiFillLinkedin />}
+                        >
+                            Linkedin
+                        </Button>
+                    </div>
+                </div>
             </div>
-        </>
+        </React.Fragment>
     )
 }
 
@@ -204,15 +228,5 @@ const IntroSection = styled.section`
         --color-homepage-dark 350ms linear 0s;
     margin-top: -8.5rem;
 `
-
-export async function getStaticProps(ctx) {
-    const about = await axios.get("/api/about")
-
-    return {
-        props: {
-            about: about || {},
-        },
-    }
-}
 
 Home.getLayout = (page: React.ReactNode) => <Main>{page}</Main>

@@ -85,7 +85,7 @@ const getInitialColorMode: () => string = () => {
     // If they are using a browser/OS that doesn't support
     // color themes, let's default to 'light'.
 
-    return "light"
+    return "dark"
 }
 
 export const useColorMode = () => {

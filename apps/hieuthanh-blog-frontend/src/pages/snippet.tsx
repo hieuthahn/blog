@@ -20,7 +20,18 @@ export default function Home() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div style={{ minHeight: "1000px" }}>content</div>
+            <div style={{ minHeight: "1000px" }}>
+                {" "}
+                <div className="flex flex-col items-center justify-center min-h-screen ">
+                    <h1 className="mb-8 text-5xl font-bold text-color-text animate-pulse">
+                        Coming Soon
+                    </h1>
+                    <p className="mb-8 text-lg text-color-text">
+                        I'm working hard to bring you something amazing. Stay
+                        tuned!
+                    </p>
+                </div>
+            </div>
         </>
     )
 }
