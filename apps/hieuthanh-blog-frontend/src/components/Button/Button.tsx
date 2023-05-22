@@ -1,12 +1,11 @@
 import React from "react"
-import NextLink from "next/link"
+import NextLink, { LinkProps } from "next/link"
 import styled from "styled-components"
-import { Url } from "next/dist/shared/lib/router/router"
 
 interface ButtonProps {
     onClick?: () => void
     variant?: string
-    href?: string | undefined
+    href?: string | URL | object
     disabled?: boolean
     className?: string
     style?: React.CSSProperties
@@ -20,7 +19,7 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
     variant = "solid",
-    href,
+    href = "",
     onClick,
     disabled = false,
     className,
@@ -30,6 +29,7 @@ const Button: React.FC<ButtonProps> = ({
     size = "middle",
 }) => {
     const ButtonWrapper = href ? NextLink : _Button
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 
     const getVariantButton = () => {
         switch (variant) {

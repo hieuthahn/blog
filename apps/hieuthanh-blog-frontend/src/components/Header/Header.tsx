@@ -148,7 +148,7 @@ const Wrapper = styled.div`
 `
 
 const InnerWrapper = styled.header`
-    position: ${(props) => (props.position ? props.position : "relative")};
+    position: relative;
     top: 0px;
     right: 0px;
     left: 0px;
@@ -195,12 +195,6 @@ const LogoWrapper = styled(NextLink)`
         margin-right: 0px;
         margin-top: 14px;
     }
-`
-
-const LogoText = styled.span`
-    display: inline-block;
-    font-weight: var(--font-weight-medium);
-    color: var(--color-primary);
 `
 
 const LogoSVG = styled(Icon)`

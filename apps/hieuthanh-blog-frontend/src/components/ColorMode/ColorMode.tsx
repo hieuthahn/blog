@@ -1,21 +1,20 @@
 import { COLORS, COLORS_SYNTAX } from "@/constants"
-import React from "react"
-import type { FC, SetStateAction } from "react"
+import { useState, createContext, useContext, useEffect } from "react"
 
-type ColorContextType = "light" | "dark" | ""
+export const ColorModeContext = createContext({
+    colorMode: "",
+    setColorMode: (value: "light" | "dark") => {},
+})
 
-export const ColorModeContext = React.createContext<ColorContextType>("")
-
-type Props = {
+type ColorModeProviderProps = {
     children?: React.ReactNode
 }
 
-const ColorModeProvider: FC<Props> = ({ children }: Props) => {
-    const [colorMode, rawSetColorMode] = React.useState<ColorContextType>()
+const ColorModeProvider: React.FC<ColorModeProviderProps> = ({ children }) => {
+    const [colorMode, rawSetColorMode] = useState("")
 
-    React.useEffect(() => {
-        const initialColorMode: SetStateAction<ColorContextType | undefined> =
-            getInitialColorMode() ?? "dark"
+    useEffect(() => {
+        const initialColorMode = getInitialColorMode() ?? "dark"
         rawSetColorMode(initialColorMode)
         const root = window.document.documentElement
 
@@ -24,20 +23,20 @@ const ColorModeProvider: FC<Props> = ({ children }: Props) => {
         )
         rawSetColorMode(initialColorValue)
         Object.entries(COLORS).forEach(([name, colorByTheme]) => {
-            if (colorByTheme[initialColorValue]) {
+            if ((colorByTheme as any)[initialColorValue]) {
                 const cssVarName = `--color-${name}`
                 root.style.setProperty(
                     cssVarName,
-                    colorByTheme[initialColorValue]
+                    (colorByTheme as any)[initialColorValue]
                 )
             }
         })
         Object.entries(COLORS_SYNTAX).forEach(([name, colorByTheme]) => {
-            if (colorByTheme[initialColorValue]) {
+            if ((colorByTheme as any)[initialColorValue]) {
                 const cssVarName = `--syntax-${name}`
                 root.style.setProperty(
                     cssVarName,
-                    colorByTheme[initialColorValue]
+                    (colorByTheme as any)[initialColorValue]
                 )
             }
         })
@@ -60,6 +59,7 @@ const ColorModeProvider: FC<Props> = ({ children }: Props) => {
             }
         })
     }
+
     return (
         <ColorModeContext.Provider value={{ colorMode, setColorMode }}>
             {children}
@@ -89,7 +89,7 @@ const getInitialColorMode: () => string = () => {
 }
 
 export const useColorMode = () => {
-    const colorContext = React.useContext(ColorModeContext)
+    const colorContext = useContext(ColorModeContext)
 
     return colorContext
 }

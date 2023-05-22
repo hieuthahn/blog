@@ -6,12 +6,21 @@ import { COLORS } from "@/constants"
 
 interface Props {
     href: string
-    target: string
-    rel: string
+    target?: string
+    rel?: string
+    children: React.ReactNode | string
+    className?: string
     delegated?: object
 }
 
-const Link = ({ href, target, rel, ...delegated }: Props) => {
+const Link = ({
+    href,
+    target,
+    rel,
+    className,
+    children,
+    ...delegated
+}: Props) => {
     // Links are external if they start with `http` or `https`
     const external = href.match(/(^http|^mailto)/i)
 
@@ -32,13 +41,14 @@ const Link = ({ href, target, rel, ...delegated }: Props) => {
             rel={safeRel}
             target={target}
             {...delegated}
-        />
+        >
+            {children}
+        </LinkComponent>
     )
 }
 
 const ExternalLink = styled.a`
-    color: ${(props) =>
-        COLORS.text[props.theme] ? COLORS.text[props.theme] : COLORS.pink[500]};
+    // color: ${(props) => "#ec4899"};
 `
 
 const InternalLink = styled(ExternalLink).attrs((props) => ({

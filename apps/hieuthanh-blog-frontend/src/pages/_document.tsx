@@ -30,20 +30,20 @@ const MagicScriptTag = () => {
   root.style.setProperty(
     '--color-text',
     colorMode === 'light'
-      ? '${COLORS.light.text}'
-      : '${COLORS.dark.text}'
+      ? '${COLORS.text.light}'
+      : '${COLORS.text.dark}'
   );
   root.style.setProperty(
     '--color-background',
     colorMode === 'light'
-      ? '${COLORS.light.background}'
-      : '${COLORS.dark.background}'
+      ? '${COLORS.background.light}'
+      : '${COLORS.background.dark}'
   );
   root.style.setProperty(
     '--color-primary',
     colorMode === 'light'
-      ? '${COLORS.light.primary}'
-      : '${COLORS.dark.primary}'
+      ? '${COLORS.primary.light}'
+      : '${COLORS.primary.dark}'
   );
   root.style.setProperty('--initial-color-mode', colorMode);
 })()`

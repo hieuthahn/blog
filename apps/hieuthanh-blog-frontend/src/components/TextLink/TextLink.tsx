@@ -13,17 +13,16 @@ type Props = {
     activePath?: string
 }
 
-const TextLink = ({
+const TextLink: React.FC<Props> = ({
     children,
     lineSize = "small",
     activePath,
     ...delegated
-}: Props) => {
+}) => {
     const { colorMode } = useColorMode()
     return (
         <Wrapper>
-            <Link
-                theme={colorMode}
+            <NextLink
                 className={`relative p-[10px] text-base text-color-text ${
                     activePath === delegated?.href ? "font-semibold" : ""
                 }`}
@@ -94,7 +93,7 @@ const TextLink = ({
                         )}
                     </>
                 )}
-            </Link>
+            </NextLink>
         </Wrapper>
     )
 }
