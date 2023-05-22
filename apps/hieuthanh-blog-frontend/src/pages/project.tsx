@@ -3,9 +3,7 @@ import React from "react"
 import { Inter } from "next/font/google"
 import Main from "@/layouts/Main"
 
-const inter = Inter({ subsets: ["latin"] })
-
-export default function Home() {
+const Project = () => {
     return (
         <>
             <Head>
@@ -35,4 +33,6 @@ export default function Home() {
     )
 }
 
-Home.getLayout = (page: React.ReactNode) => <Main>{page}</Main>
+Project.getLayout = (page: React.ReactNode) => <Main>{page}</Main>
+
+export default Project

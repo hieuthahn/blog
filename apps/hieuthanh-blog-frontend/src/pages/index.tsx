@@ -13,11 +13,7 @@ import about from "@/lib/data/about"
 
 const inter = Inter({ subsets: ["latin"] })
 
-interface HomeProps {
-    props: any
-}
-
-export default function Home(): React.FC<HomeProps> {
+const Home = () => {
     return (
         <React.Fragment>
             <Head>
@@ -230,3 +226,5 @@ const IntroSection = styled.section`
 `
 
 Home.getLayout = (page: React.ReactNode) => <Main>{page}</Main>
+
+export default Home
