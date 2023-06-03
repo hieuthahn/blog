@@ -19,7 +19,7 @@ const menuData = [
     },
     {
         label: "Blog",
-        href: "/blog",
+        href: "https://hieuthahn.bio",
         lineSize: "small",
     },
     {
